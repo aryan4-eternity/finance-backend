@@ -1,0 +1,30 @@
+from pydantic import BaseModel
+from typing import List, Optional
+class SummaryResponse(BaseModel):
+    total_income: float
+    total_expenses: float
+    net_balance: float
+    total_records: int
+class CategorySummaryItem(BaseModel):
+    category: str
+    total_income: float
+    total_expense: float
+    net: float
+class CategorySummaryResponse(BaseModel):
+    categories: List[CategorySummaryItem]
+class TrendItem(BaseModel):
+    month: str                     
+    income: float
+    expense: float
+    net: float
+class TrendsResponse(BaseModel):
+    trends: List[TrendItem]
+class RecentRecordItem(BaseModel):
+    id: int
+    amount: float
+    type: str
+    category: str
+    date: str
+    description: Optional[str]
+class RecentResponse(BaseModel):
+    records: List[RecentRecordItem]
